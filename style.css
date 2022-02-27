@@ -1,0 +1,230 @@
+@font-face {
+    font-family: Norse-Bold;
+    src: url(./Norse-Bold.otf);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    display: grid;
+    margin: 0;
+    grid-template-columns: 30vw 70vw;
+    font-size: 16px;
+}
+
+:root {
+    --bg-light: rgba(155, 178, 115, 0.507);
+    --btn-color: rgb(42, 61, 10);
+    --input-red: #D55C5F;
+}
+
+.left {
+    position: relative;
+    height: 100vh;
+}
+
+.img-divers {
+    max-width: 30vw;
+    height: 100vh;
+}
+
+.logo-bg {
+    position: absolute;
+    width: 100%;
+    background: var(--bg-light);
+    opacity: 1;
+    top: 33vh;
+    text-align: center;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-img {
+    max-height: 100px;
+    margin: .5rem;
+    
+}
+
+.logo-name {
+    font-family: Norse-Bold, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: white;
+    font-size: max(7rem);
+    margin: .5rem;
+    position: relative;
+    top: .7rem;
+}
+
+.img-credit {
+    position: absolute;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: light;
+    bottom: 1rem;
+    color: white;
+    opacity: 0.9;
+    text-align: center;
+}
+
+a {
+    color: white;
+}
+
+.right {
+    background: var(--bg-light);
+    display: grid;
+    grid-template-rows: 33vh 34vh 33vh;
+}
+
+.upper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.upper-text {
+    grid-row-start: 2;
+    padding-left: 3vw;
+    padding-right: 15vw;
+    padding-bottom: 3vh;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.italic {
+    font-style: italic;
+    text-shadow: .3rem .3rem .1rem var(--bg-light);
+}
+
+.middle {
+    padding-left: 3vw;
+    background: whitesmoke;
+    box-shadow: 0 5px 5px var(--bg-light);
+}
+
+.form {
+    height: 34vh;
+    margin: 0;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1rem;
+    width: 100%;
+}
+
+.form-legend {
+    grid-row: 1 / 2;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    display: flex;
+    align-items: center;
+}
+
+.form-names {
+    grid-row: 2 / 3;
+}
+
+.form-contacts {
+    grid-row: 3 / 4;
+}
+
+.form-passwords {
+    grid-row: 4 / 5;
+}
+
+label {
+    display: block;
+    margin-bottom: .4rem;
+    letter-spacing: .05rem;
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--btn-color);
+}
+
+input {
+    border: 1px solid var(--bg-light);
+    border-radius: 4px;
+    padding: .4rem;
+    padding-left: .8rem;
+    width: 80%;
+    max-width: 15rem;
+    height: 1.2rem;
+    font-size: 1.2rem;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid var(--btn-color);
+    box-shadow: 1px 1px 1px var(--btn-color);
+}
+
+/* input:invalid {
+    border: 2px solid var(--input-red);
+    color: var(--input-red);
+    box-shadow: 1px 1px 1px var(--input-red);
+} */
+
+.invalid input {
+    border: 2px solid var(--input-red);
+    color: var(--input-red);
+    box-shadow: 1px 1px 1px var(--input-red);
+}
+
+.invalid label {
+    color: var(--input-red);
+}
+
+#pw-check-error {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--input-red);
+    margin-top: 2px;
+}
+
+.reveal-password {
+    border: none;
+    padding: .2rem .6rem;
+    width: 3rem;
+    font-size: .8rem;
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--bg-light);
+    display: inline-block;
+    font-weight: 300;
+}
+
+.lower {
+    padding-left: 3vw;
+    padding-top: 3vh;
+}
+
+button {
+    background-color: var(--btn-color);
+    font-size: 1rem;
+    font-weight: bold;
+    padding: .8rem 3rem;
+    color: whitesmoke;
+    border: 0;
+    border-radius: .4rem;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+button:hover,
+button:focus {
+    outline: none;
+    background-color: whitesmoke;
+    color: var(--btn-color);
+    box-shadow: 5px 5px 5px var(--btn-color);
+}
+
+.log-in-text {
+    margin: 2rem 0 0;
+}
+
+#login-link {
+    color: var(--btn-color);
+    font-weight: bold;
+}

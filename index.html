@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="left">
+        <img class="img-divers" src="forest.jpg" alt="The impressive forest of Washington.">
+        <div class="logo-bg">
+            <img class="logo-img" src="odin-lined.png" alt="Logo of The Odin Project">
+            <span class="logo-name">odin</span>
+        </div>
+        <p class="img-credit">Photo by <a href="https://unsplash.com/@haliewestphoto?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Halie West</a> on <a href="https://unsplash.com/photos/25xggax4bSA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+        </p>
+    </div>
+    <div class="right">
+        <div class="upper">
+            <div class="upper-text">
+                <p>This is not a real online service! You know you need something like this in your life
+                    to help you realize your deepest dreams.
+                   <br> Sign up <span class="italic">now</span> to get started. </p>
+               <p>You <span class="italic">know</span> you want to.</p>
+            </div>
+        </div>
+        <div class="middle">
+            <form class="form" id="sign-up-form">
+                <legend class="form-legend">Let's do this!</legend>
+                <div class="form-names">
+                    <label for="first-name">*FIRST NAME</label>
+                    <input type="text" name="first-name" id="first-name" required autocomplete="given-name">
+                </div>
+                <div class="form-names">
+                    <label for="last-name">LAST NAME</label>
+                    <input type="text" name="last-name" id="last-name">
+                </div>
+                <div class="form-contacts">
+                    <label for="email">*EMAIL</label>
+                    <input type="email" name="email" id="email" required autocomplete="email">
+                </div>
+                <div class="form-contacts">
+                    <label for="phone-number">PHONE NUMBER</label>
+                    <input type="tel" name="phone-number" id="phone-number">
+                </div>
+                <div class="form-passwords">
+                    <label for="password1">*PASSWORD</label>
+                    <input type="password" name="password1" id="password1" required autocomplete="new-password">
+                    <button type="button" hidden data-pressed="false" class="reveal-password" data-text-show="show" data-text-hide="hide">show</button>
+                    <span id="pw-check-error"></span>
+                </div>
+                <div class="form-passwords">
+                    <label for="password2">*CONFIRM PASSWORD</label>
+                    <input type="password" name="password2" id="password2" required autocomplete="new-password">
+                </div>
+            </form>
+        </div>
+        <div class="lower">
+            <button type="submit" form="sign-up-form">Create Account</button>
+            <div class="log-in-text">Already have an account? <a id="login-link">Login in</a></div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    // form validation from sitepoint's The Complete Guide to HTML Forms and Constraint Validation
+    const myForm = document.getElementById("sign-up-form");
+    myForm.noValidate = true;
+    myForm.addEventListener('submit', validateForm);
+    function validateForm(e) {
+        const form = e.target;
+        if (form.checkValidity()) {
+        } else {
+            e.preventDefault();
+            Array.from(form.elements).forEach(i => {
+                if (i.checkValidity()) {
+                    i.parentElement.classList.remove('invalid');
+                } else {
+                    i.parentElement.classList.add('invalid');
+                }
+            });
+        }
+    };
+
+    // check whether password and comfirm password are matched, if not, show red error message.
+    function checkPassword() {
+        password1 = document.getElementById('password1').value;
+        password2 = document.getElementById('password2').value;
+        errorText = document.getElementById('pw-check-error');
+        errorText.textContent = '';
+        if (password1 !== password2) {
+            errorText.textContent = '*Passwords do not match';
+        };
+    };
+    myForm.addEventListener('submit', checkPassword);
+
+    // added a reveal and hide password button.
+    const revealPassword = document.querySelector('.reveal-password');
+    const passwordField = document.querySelector('#password1');
+
+    if (revealPassword && passwordField) {
+        revealPassword.hidden = false;
+        passwordField.classList.add('has-js');
+
+        revealPassword.addEventListener('click', (e) => {
+            let isPressed = revealPassword.getAttribute('data-pressed') === 'true';
+            if (isPressed) {
+                passwordField.type = 'password';
+                revealPassword.innerText = revealPassword.dataset.textShow;
+            } else {
+                passwordField.type = 'text';
+                revealPassword.innerText = revealPassword.dataset.textHide;
+            }
+            revealPassword.setAttribute('data-pressed', String(!isPressed));
+        });
+    }
+</script>
